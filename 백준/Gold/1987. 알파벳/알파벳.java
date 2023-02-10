@@ -47,7 +47,7 @@ public class Main {
 	}
 	
 	static void dfs(int x, int y, int cnt) {
-		visited[x][y] = true;
+//		visited[x][y] = true;
 		alphabet[board[x][y] - 'A'] = true;
 		
 		if (max < cnt) {
@@ -59,13 +59,13 @@ public class Main {
 			int newY = y + dy[k];
 			
 			if (newX >= 0 && newX < R && newY >= 0 && newY < C 
-					&& !visited[newX][newY] && !alphabet[board[newX][newY] - 'A']) {
+					 && !alphabet[board[newX][newY] - 'A']) {
 			
 				dfs(newX, newY, cnt + 1);
 			}
 		}
 		
-		visited[x][y] = false;
+//		visited[x][y] = false;
 		alphabet[board[x][y] - 'A'] = false;
 	}
 
