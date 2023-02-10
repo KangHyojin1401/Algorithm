@@ -3,6 +3,13 @@ import java.io.BufferedWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
+/*
+ * 말은 상하좌우로 인접한 네 칸 중의 한 칸으로 이동할 수 있는데, 
+ * 새로 이동한 칸에 적혀 있는 알파벳은 지금까지 지나온 모든 칸에 적혀 있는 알파벳과는 달라야 한다. 
+ * 즉, 같은 알파벳이 적힌 칸을 두 번 지날 수 없다.
+ * 좌측 상단에서 시작해서, 말이 최대한 몇 칸을 지날 수 있는지를 구하는 프로그램을 작성하시오. 
+ * 말이 지나는 칸은 좌측 상단의 칸도 포함된다.
+ */
 public class Main {
 	
 	static int R, C;
@@ -35,7 +42,9 @@ public class Main {
 		
 		
 		//알고리즘
+		alphabet[board[0][0] - 'A'] = true;
 		dfs(0, 0, 1);
+		
 		
 		
 		//출력
@@ -48,8 +57,8 @@ public class Main {
 	
 	static void dfs(int x, int y, int cnt) {
 //		visited[x][y] = true;
-		alphabet[board[x][y] - 'A'] = true;
-		
+//		alphabet[board[x][y] - 'A'] = true;
+
 		if (max < cnt) {
 			max = cnt;
 		}
@@ -60,13 +69,14 @@ public class Main {
 			
 			if (newX >= 0 && newX < R && newY >= 0 && newY < C 
 					 && !alphabet[board[newX][newY] - 'A']) {
-			
+				alphabet[board[newX][newY] - 'A'] = true;
 				dfs(newX, newY, cnt + 1);
+				alphabet[board[newX][newY] - 'A'] = false;
 			}
 		}
 		
 //		visited[x][y] = false;
-		alphabet[board[x][y] - 'A'] = false;
+//		alphabet[board[x][y] - 'A'] = false;
 	}
 
 }
