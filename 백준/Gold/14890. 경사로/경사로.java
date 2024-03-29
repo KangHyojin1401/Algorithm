@@ -30,7 +30,21 @@ public class Main {
 			}
 		}
 		
+        
 		//알고리즘
+		algorithm(true);
+		algorithm(false);
+		
+		
+		//출력
+		bw.write(road + "\n");
+		bw.flush();
+		bw.close();
+		br.close();
+		
+	}
+	
+	static void algorithm(boolean isRow) {
 		for (int i = 0; i < N; i++) {
 			int prev = -1;
 			int same = 1;
@@ -38,7 +52,7 @@ public class Main {
 			boolean down = false; 
 			
 			for (j = 0; j < N; j++) {
-				int cur = map[i][j];
+				int cur = isRow ? map[i][j] : map[j][i];
 				
 				if (prev == -1) { //맨 처음 원소
 					prev = cur;
@@ -81,59 +95,6 @@ public class Main {
 				road++;
 			}
 		}
-		
-		for (int j = 0; j < N; j++) {
-			int prev = -1;
-			int same = 1;
-			int i;
-			boolean down = false; 
-			
-			for (i = 0; i < N; i++) {
-				int cur = map[i][j];
-				
-				if (prev == -1) { //맨 처음 원소
-					prev = cur;
-					continue;
-				}
-				
-				if (prev == cur) {
-					same++;
-				} else if (down && same < L) {
-					break;
-				} else if (prev == cur - 1) { //우상향 경사로
-					if (same >= L) {
-						prev = cur;
-						same = 1;
-					} else { // (2번, 3번, 4번 예제)
-						break; 
-					}
-				} else if (prev == cur + 1) { //우하향 경사로
-					down = true;
-					prev = cur;
-					same = 1;
-				} else { //높이 차이가 1 초과 (1번 예제)
-					break;
-				}
-				
-				if (down && same == L) {
-					down = false;
-					prev = cur;
-					same = 0;
-				}
-			}
-			
-			if (i == N && !down) {
-				road++;
-			}
-		}
-		
-		
-		//출력
-		bw.write(road + "\n");
-		bw.flush();
-		bw.close();
-		br.close();
-		
 	}
 
 }
