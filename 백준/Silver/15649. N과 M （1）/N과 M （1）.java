@@ -7,6 +7,7 @@ public class Main {
 	
 	static int N, M;
 	static int[] picked;
+	static StringBuilder sb;
 
 	public static void main(String[] args) throws Exception {
 
@@ -19,6 +20,7 @@ public class Main {
 		M = Integer.parseInt(line[1]);
 		
 		picked = new int[M];
+		sb = new StringBuilder();
 		
 		
 		//알고리즘
@@ -26,7 +28,7 @@ public class Main {
 		
 		
 		//출력
-		bw.write("\n");
+		bw.write(sb.toString());
 		bw.flush();
 		bw.close();
 		br.close();
@@ -36,9 +38,9 @@ public class Main {
 	static void perm(int cnt, int bitMask) {
 		if (cnt == M) {
 			for (int a = 0; a < M; a++) {
-				System.out.print(picked[a] + " ");
+				sb.append(picked[a]).append(" ");
 			}
-			System.out.println();
+			sb.append("\n");
 			return;
 		}
 		
