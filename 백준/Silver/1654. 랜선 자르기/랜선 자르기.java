@@ -41,27 +41,22 @@ public class Main {
 		bw.close();
 		br.close();
 		
-	}	
+	}
+	
 	static void search(int start, int end) {
 		long sToEnd = (long)start + (long)end; 
 		int mid = (int) (sToEnd / 2);
 		int sum = sumDivide(mid);
 		
-		if (N < sum) {
+		if (N <= sum) {
 			if (N > sumDivide(mid + 1)) {
 				max = mid;
 				return;
 			}
 			search(mid + 1, end);
-		} else if (N > sum){
-			search(start, mid);  
 		} else {
-			if (N > sumDivide(mid + 1)) {
-				max = mid;
-				return;
-			}
-			search(mid + 1, end);
-		}
+			search(start, mid);  
+		} 
 	}
 	
 	static int sumDivide(long n) {
