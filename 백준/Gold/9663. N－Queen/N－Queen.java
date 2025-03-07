@@ -8,9 +8,6 @@ public class Main {
 	static int N;
 	static int[][] arr;
 	
-	static int[] dr = {1, 1, 1};
-	static int[] dc = {-1, 0, 1};
-	
 	static int cnt = 0;
 
 	public static void main(String[] args) throws Exception {
@@ -95,7 +92,6 @@ public class Main {
 				}
 			}
 		}
-		
 		
 	}
 
